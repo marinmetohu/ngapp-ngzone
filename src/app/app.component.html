@@ -7,10 +7,23 @@
   </thead>
   <tbody>
     <tr *ngFor="let tr of elements">
-        <ng-container  *ngFor="let td of generateArray(tr)">
-            <td *ngIf="td.key !== 'id'">{{td.value}}</td>
-        </ng-container >
-        
+ 
+            <td >{{tr.updated_at}}</td>
+            <td ><a href="/index.php/kb_offer/show/id/{{tr.id}}">{{tr.document_nr}}</a></td>
+            <td >{{tr.status}}</td>
+            <td >{{tr.is_valid_until}}</td>
+            <td >{{tr.customer}}</td>
+            <td >{{tr.title}}</td>
+            <td >{{tr.currency}}</td>
+            <td >{{tr.total_net}}</td>
+            <td >{{tr.total_gross}}</td>
+            <td  class="c nolink">
+              <i class="halflings halflings-ok-sign opaque" [ngClass]="{'green':!!tr.dispatch, 'grey': !tr.dispatch}" ></i>
+            </td>
+            <td>
+                <button class="sc-ifAKCX fonDgb">Actions<span class="sc-EHOje dRjkiR"></span></button>
+            </td>
+            <td><input type="checkbox" value="on"></td>
     </tr>
     
   </tbody>

@@ -43,9 +43,9 @@ export class AppComponent implements OnInit, OnDestroy {
   loadBody(): Array<any> {
     return [
       {
-        id: 1,
+        id: 35,
         updated_at: '2018-02-27',
-        document_nr: 'AN-00001',
+        document_nr: 'AN-00035',
         status: 'draft',
         is_valid_until: '2018-08-01',
         customer: 'My Client AG1',
@@ -56,9 +56,9 @@ export class AppComponent implements OnInit, OnDestroy {
         dispatch: false,
       },
       {
-        id: 2,
+        id: 50,
         updated_at: '2018-02-27',
-        document_nr: 'AN-00002',
+        document_nr: 'AN-00050',
         status: 'confirmed',
         is_valid_until: '2018-08-26',
         customer: 'My Client AG2',
