@@ -4,6 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+To serve the first app: `ng serve --app=0` or `ng serve --app 0`.
+
+To serve the second app: `ng serve --app=1` or `ng serve --app 1`.
+
+To serve application by name `ng serve --app=app1` or `ng serve --app app1`.
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
