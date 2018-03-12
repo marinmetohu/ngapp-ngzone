@@ -28,15 +28,9 @@ export class AppComponent implements OnInit, OnDestroy {
   loadHeader(): void {
     this.theadData = [
       {title: 'Date'},
-      {title: 'No.'},
       {title: 'Status'},
-      {title: 'Valid unit'},
-      {title: 'Customer'},
       {title: 'Title'},
-      {title: 'Currency'},
-      {title: 'Net'},
-      {title: 'Gross'},
-      {title: 'Dispatch'}
+      {title: 'Currency'}
     ];
   }
 
@@ -86,5 +80,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loadHeader();
 
     this.elements = (!!json.length) ? json : this.loadBody();
+  }
+
+  callApp1(){
+    if(!!window.my && !!window.my.app1 && !!window.my.app1.showHidden) window.my.app1.showHidden();
   }
 }

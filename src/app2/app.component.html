@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<h2>Ng App2 </h2>
+<h4 *ngIf="!theadData.length">Table Waiting </h4>
+<table class="table table-striped table-condensed table-hover jsTable" cellpadding="0" cellspacing="0">
+  <thead>
+    <th *ngFor="let th of theadData">{{th.title}}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tr of elements">
+        <td >{{tr.updated_at}}</td>
+        <td >{{tr.status}}</td>
+        <td >{{tr.title}}</td>
+        <td >{{tr.currency}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+<div *ngIf="!theadData.length">
+  <button (click)="callApp1()">Call App 1</button>
+</div>
