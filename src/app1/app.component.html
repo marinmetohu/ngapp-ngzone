@@ -4,7 +4,7 @@
     <h2>Ng App 1</h2>
     <div>
         <div>
-            <button *ngIf="!totalLength" (click)="loadTable()" >Load Table</button>
+            <button *ngIf="!totalLength" (click)="loadTable()" >Load Table in App2</button>
         </div>
       
         <div *ngIf="!!totalLength">
@@ -15,7 +15,7 @@
                         <div>App2 loaded: {{totalLength}} rows</div> 
                         <div *ngIf="!!totalLength && totalLength != 4" style="margin-top: 20px; background: #f9f9f9; padding: 10px;">
                             <div>Another Action</div>
-                            <button (click)="loadCustomTable()" >Load Custom Table in App2</button>
+                            <button (click)="loadCustomTable()" >Load Another Custom Table in App2</button>
                         </div>
                         
                     </td>
@@ -31,7 +31,21 @@
     window.my.customtable.totalLength.subscribe(val => {
         
         this.totalLength = val;
-    });                         
+    });
+    
+    
+    /**
+    * Load Another Table in App2 by passing an array
+    */
+    window.my.customtable.loadTable(
+        [
+            { id: 35, updated_at: '2018-02-27', status: 'draft', title: 'Title1', currency: 'EUR' },
+            { id: 50, updated_at: '2018-02-28', status: 'confirmed', title: 'Title 2', currency: 'EUR' },
+            { id: 51, updated_at: '2018-02-29', status: 'draft', title: 'Title1', currency: 'EUR' },
+            { id: 52, updated_at: '2018-02-30', status: 'confirmed', title: 'Title 2', currency: 'EUR' }
+        ]
+    );
+
     </textarea>
                     </td>
                 </tr>

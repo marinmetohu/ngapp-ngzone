@@ -1,6 +1,6 @@
 # NgApp with NgZone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+Check the `www` folder for a quick demo.  Open the index.html in the browser locally.
 
 ## Development server
 
