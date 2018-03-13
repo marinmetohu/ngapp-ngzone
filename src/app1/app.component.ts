@@ -3,7 +3,7 @@
  */
 
 import {Component, NgZone, OnInit, OnDestroy, Input} from '@angular/core';
-
+ 
 @Component({
   selector: 'app1-component',
   templateUrl: './app.component.html',
@@ -15,12 +15,24 @@ export class App1Component implements OnInit, OnDestroy {
   theadData = [];
   elements = [];
   isHidden: boolean;
+  totalLength: number;
 
   ngOnInit() {
     window.my = window.my || {};
     window.my.app1 = window.my.app1 || {};
     window.my.app1.showHidden = this.showHidden.bind(this);
     this.isHidden = true;
+
+    this.getTotalLength();
+  }
+
+  getTotalLength(): void {
+    if(!!window.my && !!window.my.customtable && !!window.my.customtable.totalLength){
+      window.my.customtable.totalLength.subscribe(val => {
+        console.log(val);
+        this.totalLength = val;
+      });
+    }
   }
 
   ngOnDestroy() {

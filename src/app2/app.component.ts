@@ -4,6 +4,8 @@
 
 import {Component, NgZone, OnInit, OnDestroy} from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 @Component({
   selector: 'ng-custom-table',
   templateUrl: './app.component.html',
@@ -14,11 +16,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   theadData = [];
   elements = [];
+  totalLength = new BehaviorSubject<number>(0);
 
   ngOnInit() {
     window.my = window.my || {};
     window.my.customtable = window.my.customtable || {};
     window.my.customtable.loadTable = this.loadTable.bind(this);
+    window.my.customtable.totalLength = this.totalLength;
   }
 
   generateArray(obj) {
@@ -80,6 +84,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loadHeader();
 
     this.elements = (!!json.length) ? json : this.loadBody();
+
+    this.totalLength.next(this.elements.length);
   }
 
   callApp1(){

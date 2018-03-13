@@ -3,7 +3,10 @@
 <div>
   <h2>Ng App 1</h2>
   <div>
-      <button (click)="loadTable()" >Load Table</button>
+      <button *ngIf="!totalLength" (click)="loadTable()" >Load Table</button>
+      <div *ngIf="!!totalLength">
+            loaded: {{totalLength}} rows
+        </div>
   </div>
   <div *ngIf="!isHidden">
       call accepted
