@@ -1,14 +1,49 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div>
-  <h2>Ng App 1</h2>
-  <div>
-      <button *ngIf="!totalLength" (click)="loadTable()" >Load Table</button>
-      <div *ngIf="!!totalLength">
-            loaded: {{totalLength}} rows
+<div style="background: aliceblue; display: block;">
+    <h2>Ng App 1</h2>
+    <div>
+        <div>
+            <button *ngIf="!totalLength" (click)="loadTable()" >Load Table</button>
         </div>
-  </div>
-  <div *ngIf="!isHidden">
-      call accepted
-  </div>
+      
+        <div *ngIf="!!totalLength">
+
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <div>App2 loaded: {{totalLength}} rows</div> 
+                        <div *ngIf="!!totalLength && totalLength != 4" style="margin-top: 20px; background: #f9f9f9; padding: 10px;">
+                            <div>Another Action</div>
+                            <button (click)="loadCustomTable()" >Load Custom Table in App2</button>
+                        </div>
+                        
+                    </td>
+                    <td>
+    <textarea rows="14" cols="65" disabled="true" ngNonBindable>
+    /** in html template */    
+    App2 loaded: {{totalLength}} rows
+
+            
+    /** totalLength is an observable in App2 
+    *   so we can subscribe to it in App1
+    */
+    window.my.customtable.totalLength.subscribe(val => {
+        
+        this.totalLength = val;
+    });                         
+    </textarea>
+                    </td>
+                </tr>
+            </table>
+            
+            
+        </div>
+
+        <div *ngIf="!isHidden" style="margin-top: 20px;">
+                call accepted
+        </div>
+        
+    </div>
+  
 </div>

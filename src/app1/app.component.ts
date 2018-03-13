@@ -3,7 +3,7 @@
  */
 
 import {Component, NgZone, OnInit, OnDestroy, Input} from '@angular/core';
- 
+import {has} from 'lodash/has';
 @Component({
   selector: 'app1-component',
   templateUrl: './app.component.html',
@@ -27,7 +27,9 @@ export class App1Component implements OnInit, OnDestroy {
   }
 
   getTotalLength(): void {
+    /** check if the other app has registered itself in the window */
     if(!!window.my && !!window.my.customtable && !!window.my.customtable.totalLength){
+      /** totalLength is an observable in customtable so we can subscribe to it  */
       window.my.customtable.totalLength.subscribe(val => {
         console.log(val);
         this.totalLength = val;
@@ -36,12 +38,25 @@ export class App1Component implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    window.my.customtable.showHidden = null;
+    window.my.app1.showHidden = null;
   }
 
   loadTable() {
 
     if(!!window.my && window.my.customtable) window.my.customtable.loadTable();
+  }
+
+  loadCustomTable() {
+    if(!!window.my && window.my.customtable) {
+      window.my.customtable.loadTable(
+        [
+          { id: 35, updated_at: '2018-02-27', status: 'draft', title: 'Title1', currency: 'EUR' },
+          { id: 50, updated_at: '2018-02-28', status: 'confirmed', title: 'Title 2', currency: 'EUR' },
+          { id: 51, updated_at: '2018-02-29', status: 'draft', title: 'Title1', currency: 'EUR' },
+          { id: 52, updated_at: '2018-02-30', status: 'confirmed', title: 'Title 2', currency: 'EUR' }
+        ]
+      );
+    }
   }
 
   showHidden(json = []): void {
